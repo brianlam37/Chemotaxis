@@ -1,5 +1,5 @@
   //declare bacteria variables here
- Fish school[] =new Fish[20];
+ Fish school[] =new Fish[10];
  void setup()   
  { 
    frameRate(15);
