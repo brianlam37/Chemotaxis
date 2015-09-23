@@ -1,12 +1,12 @@
- //declare bacteria variables here
- Fish school[] =new Fish[6];
+  //declare bacteria variables here
+ Fish school[] =new Fish[20];
  void setup()   
  { 
    frameRate(15);
-   size(400,400);   
+   size(800,800);   
    //initialize bacteria variables here 
      for(int i = 0; i<school.length;i++){
-    school[i] = new Fish((int)(Math.random()*200),(int)(Math.random()*200));
+    school[i] = new Fish((int)(Math.random()*800),(int)(Math.random()*800));
   }
  }   
  void draw()   
@@ -27,6 +27,8 @@ class Fish
   int fishY;
   int fishMX;
   int fishMY;
+  int fishMXr;
+  int fishMYr;
   Fish(int x,int y)
   {
 
@@ -39,19 +41,41 @@ class Fish
   }
   void move()
   {
-  		fishMX=(int)(Math.random()*20-10);
-  		fishMY=(int)(Math.random()*20-10);
-    	fishX+=fishMX;
-    	fishY+=fishMY;
-    
-  }
+  		fishMX=(int)(Math.random()*10);
+  		fishMY=(int)(Math.random()*10);
+  		fishMXr=(int)(Math.random()*20-10);
+  		fishMYr=(int)(Math.random()*20-10);
+    	if(Math.random()>0.3&&mouseX>fishX&&mouseY>fishY)
+    	{
+    		fishX+=fishMX;
+    		fishY+=fishMY;
+		}
+		if(Math.random()>0.3&&mouseX<fishX&&mouseY>fishY)
+		{
+	     	fishX-=fishMX;
+	    	fishY+=fishMY;
+	    }
+		if(Math.random()>0.3&&mouseX>fishX&&mouseY<fishY)
+		{
+		    fishX+=fishMX;
+		    fishY-=fishMY;
+		}
+		if(Math.random()>0.3&&mouseX<fishX&&mouseY<fishY){
+		    fishX-=fishMX;
+		    fishY-=fishMY;
+		}else
+		{
+			fishX+=fishMXr;
+	    	fishY+=fishMYr;
+		}
+	}
   
  void show()
     {
-    	if(fishMX>0){
+    	if(mouseX>fishX){
     		fishR(fishX,fishY);
     	}
-    	if(fishMX<0){
+    	if(mouseX<fishX){
     		fishF(fishX,fishY);
     	}
     }
@@ -82,23 +106,23 @@ class Fish
                 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,12,12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
                   };
                   color color1 = color(0, 0, 0);
-                  color color2 = color(253, 240, 3);
-                  color color3 = color(218, 236, 0);
-                  color color4 = color(117, 186, 17);
-                  color color5 = color(192, 201, 0);
-                  color color6 = color(173, 128, 1);
-                  color color7 = color(197, 118, 17);
-                  color color8 = color(231, 154, 26);
-                  color color9 = color(218, 88, 2);
-                  color color10 = color(234, 224, 214);
-                  color color11 = color(172, 158, 7);
-                  color color12 = color(102, 95, 0);
-                  color color13 = color(121, 129, 0);
-                  color color14 =color(167, 187, 2);
-                  color color15 =color(198, 156, 18);
+                  color color2 = color((int)(Math.random()*255), (int)(Math.random()*255), (int)(Math.random()*255));
+                  color color3 = color((int)(Math.random()*255), (int)(Math.random()*255), (int)(Math.random()*255));
+                  color color4 = color((int)(Math.random()*255), (int)(Math.random()*255), (int)(Math.random()*255));
+                  color color5 = color((int)(Math.random()*255), (int)(Math.random()*255), (int)(Math.random()*255));
+                  color color6 = color((int)(Math.random()*255), (int)(Math.random()*255), (int)(Math.random()*255));
+                  color color7 = color((int)(Math.random()*255), (int)(Math.random()*255), (int)(Math.random()*255));
+                  color color8 = color((int)(Math.random()*255), (int)(Math.random()*255), (int)(Math.random()*255));
+                  color color9 = color((int)(Math.random()*255), (int)(Math.random()*255), (int)(Math.random()*255));
+                  color color10 = color((int)(Math.random()*255), (int)(Math.random()*255), (int)(Math.random()*255));
+                  color color11 = color((int)(Math.random()*255), (int)(Math.random()*255), (int)(Math.random()*255));
+                  color color12 = color((int)(Math.random()*255), (int)(Math.random()*255), (int)(Math.random()*255));
+                  color color13 = color((int)(Math.random()*255), (int)(Math.random()*255), (int)(Math.random()*255));
+                  color color14 =color((int)(Math.random()*255), (int)(Math.random()*255), (int)(Math.random()*255));
+                  color color15 =color((int)(Math.random()*255), (int)(Math.random()*255), (int)(Math.random()*255));
                   color color16 =color(255, 255, 255);
-                  color color17 =color(218, 176, 160);
-                  int w=1;
+                  color color17 =color((int)(Math.random()*255), (int)(Math.random()*255), (int)(Math.random()*255));
+                  int w=(int)(Math.random()*3);
                   int h=w;
                   int a=0;
                   for(int p = 0; p < pix.length; p += 1)
@@ -239,23 +263,23 @@ void fishF(int fishX, int fishY){
                           {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,12,12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
                           {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
                   };
-                  color color1 = color(0, 0, 0);
-                  color color2 = color(253, 240, 3);
-                  color color3 = color(218, 236, 0);
-                  color color4 = color(117, 186, 17);
-                  color color5 = color(192, 201, 0);
-                  color color6 = color(173, 128, 1);
-                  color color7 = color(197, 118, 17);
-                  color color8 = color(231, 154, 26);
-                  color color9 = color(218, 88, 2);
-                  color color10 = color(234, 224, 214);
-                  color color11 = color(172, 158, 7);
-                  color color12 = color(102, 95, 0);
-                  color color13 = color(121, 129, 0);
-                  color color14 =color(167, 187, 2);
-                  color color15 =color(198, 156, 18);
+                                   color color1 = color(0, 0, 0);
+                  color color2 = color((int)(Math.random()*255), (int)(Math.random()*255), (int)(Math.random()*255));
+                  color color3 = color((int)(Math.random()*255), (int)(Math.random()*255), (int)(Math.random()*255));
+                  color color4 = color((int)(Math.random()*255), (int)(Math.random()*255), (int)(Math.random()*255));
+                  color color5 = color((int)(Math.random()*255), (int)(Math.random()*255), (int)(Math.random()*255));
+                  color color6 = color((int)(Math.random()*255), (int)(Math.random()*255), (int)(Math.random()*255));
+                  color color7 = color((int)(Math.random()*255), (int)(Math.random()*255), (int)(Math.random()*255));
+                  color color8 = color((int)(Math.random()*255), (int)(Math.random()*255), (int)(Math.random()*255));
+                  color color9 = color((int)(Math.random()*255), (int)(Math.random()*255), (int)(Math.random()*255));
+                  color color10 = color((int)(Math.random()*255), (int)(Math.random()*255), (int)(Math.random()*255));
+                  color color11 = color((int)(Math.random()*255), (int)(Math.random()*255), (int)(Math.random()*255));
+                  color color12 = color((int)(Math.random()*255), (int)(Math.random()*255), (int)(Math.random()*255));
+                  color color13 = color((int)(Math.random()*255), (int)(Math.random()*255), (int)(Math.random()*255));
+                  color color14 =color((int)(Math.random()*255), (int)(Math.random()*255), (int)(Math.random()*255));
+                  color color15 =color((int)(Math.random()*255), (int)(Math.random()*255), (int)(Math.random()*255));
                   color color16 =color(255, 255, 255);
-                  color color17 =color(218, 176, 160);
+                  color color17 =color((int)(Math.random()*255), (int)(Math.random()*255), (int)(Math.random()*255));
                   int w=1;
                   int h=w;
                   int a=0;
@@ -371,3 +395,4 @@ void fishF(int fishX, int fishY){
                       a =0;//makes it so that every row is not always ongoing based on "a" value from "a += w"
                   }
               }
+          
